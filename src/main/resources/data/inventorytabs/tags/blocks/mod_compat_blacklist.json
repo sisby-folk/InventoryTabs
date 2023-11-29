@@ -1,6 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {"id": "autopath:path", "required": false}
-  ]
-}

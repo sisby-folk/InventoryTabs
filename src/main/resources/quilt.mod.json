@@ -1,0 +1,46 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "folk.sisby",
+		"id": "inventory-tabs",
+		"version": "${version}",
+		"metadata": {
+			"name": "Inventory Tabs",
+			"description": "Allows swapping to other in-world screens (blocks, entities, etc) via tabs.",
+			"contributors": {
+				"KQP": "Great-Great-Grand-Developer (Original Author)",
+				"LiamMCW": "Great-Grand-Developer",
+				"Andrew6rant (Andrew Grant)": "Grand-Developer",
+				"Sisby folk": "Current Iteration Co-Authors"
+			},
+			"contact": {
+				"homepage": "https://github.com/sisby-folk/inventory-tabs",
+				"sources": "https://github.com/sisby-folk/inventory-tabs",
+				"issues": "https://github.com/sisby-folk/inventory-tabs/issues"
+			},
+			"icon": "assets/inventory_tabs/icon.png"
+		},
+		"entrypoints": {
+			"client": [
+				"folk.sisby.inventory_tabs.InventoryTabs"
+			]
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"depends": [
+			{
+				"id": "minecraft",
+				"versions": ">=${mc}"
+			},
+			{
+				"id": "quilt_loader",
+				"versions": ">=${ql}"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=${qfapi}"
+			}
+		]
+	},
+	"mixin": "inventory_tabs.mixins.json",
+	"access_widener": "inventory_tabs.accesswidener"
+}

@@ -1,51 +1,39 @@
 {
   "schemaVersion": 1,
-  "id": "inventorytabs",
+  "id": "inventory-tabs",
   "version": "${version}",
   "name": "Inventory Tabs",
-  "description": "Adds tabs to your inventory that lead to nearby blocks.",
+  "description": "Allows swapping to other in-world screens (blocks, entities, etc) via tabs.",
   "authors": [
     "KQP",
     "LiamMCW",
-    "Andrew6rant (Andrew Grant)"
+    "Andrew6rant (Andrew Grant)",
+    "Sisby folk"
   ],
   "contact": {
-    "homepage": "https://github.com/Andrew6rant/inventorytabs",
-    "sources": "https://github.com/Andrew6rant/inventorytabs",
-    "issues": "https://github.com/Andrew6rant/inventorytabs/issues"
+    "homepage": "https://github.com/sisby-folk/inventory-tabs",
+    "sources": "https://github.com/sisby-folk/inventory-tabs",
+    "issues": "https://github.com/sisby-folk/inventory-tabs/issues"
   },
   "license": "MIT",
-  "icon": "assets/inventorytabs/icon.png",
-  "environment": "client",
+  "icon": "assets/inventory_tabs/icon.png",
   "entrypoints": {
-    "main": [
-      "com.kqp.inventorytabs.init.InventoryTabs"
-    ],
     "client": [
-      "com.kqp.inventorytabs.init.InventoryTabsClient"
-    ],
-    "modmenu": [
-      "com.kqp.inventorytabs.init.InventoryTabsModMenu"
+      "folk.sisby.inventory_tabs.InventoryTabs"
     ]
   },
   "mixins": [
-    "inventorytabs.mixins.json"
+    "inventory_tabs.mixins.json"
   ],
-  "accessWidener": "inventorytabs.accesswidener",
+  "accessWidener": "inventory_tabs.accesswidener",
   "depends": {
-    "fabricloader": ">=0.14.19",
-    "fabric-api": ">=0.81.2",
-    "minecraft": ">=1.20-beta.2",
-    "cloth-config2": "*"
+    "fabricloader": ">=0.14.21",
+    "fabric-api": ">=${fapi}",
+    "minecraft": ">=${mc}"
   },
-  "custom": {
-    "modmenu": [
-      "com.kqp.inventorytabs.init.InventoryTabsConfig"
-    ]
-  },
-  "suggests": {
-    "biginv": "*",
-    "playerex": "*",
-    "modmenu": "*"
-  }
+  "jars": [
+    {
+      "file": "META-INF/jars/kaleido-config-${kaleidoConfig}.jar"
+    }
+  ]
 }

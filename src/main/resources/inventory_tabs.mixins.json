@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "folk.sisby.inventory_tabs.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "client": [
+    "MixinGenericContainerScreen",
+    "MixinGenericContainerScreenHandler",
+    "MixinHandledScreen",
+    "MixinKeyBind",
+    "MixinScreen"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "MixinBlockEntity"
+  ]
+}

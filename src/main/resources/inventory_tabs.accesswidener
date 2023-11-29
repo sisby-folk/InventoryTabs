@@ -1,0 +1,8 @@
+accessWidener v2 named
+accessible method net/minecraft/block/ShulkerBoxBlock canOpen (Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/entity/ShulkerBoxBlockEntity;)Z
+mutable field net/minecraft/client/gui/screen/Screen title Lnet/minecraft/text/Text;
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen backgroundWidth I
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen backgroundHeight I
+mutable field net/minecraft/client/gui/screen/ingame/HandledScreen playerInventoryTitle Lnet/minecraft/text/Text;
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen x I
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen y I
