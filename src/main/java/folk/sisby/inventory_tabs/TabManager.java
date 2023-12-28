@@ -139,7 +139,7 @@ public class TabManager {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             for (Tab tab : tabs) {
                 if (tab instanceof BlockTab bt) {
-                    if (pos.equals(bt.pos) || blockEntity == world.getBlockEntity(bt.pos)) return tab;
+                    if (pos.equals(bt.pos) || blockEntity == world.getBlockEntity(bt.pos) || bt.multiblockPositions.contains(pos)) return tab;
                 }
             }
         } else if (client.crosshairTarget instanceof EntityHitResult result) {
