@@ -47,6 +47,22 @@ public class InventoryTabsConfig extends WrappedConfig {
     @Comment("")
     @Comment("-------------------------------")
     @Comment("")
+    @Comment("Manually set the left bound offset for a given screen")
+    @Comment("Positive values expand the left boundary, allowing more tabs to be drawn")
+    @Comment("")
+    public final Map<String, Integer> leftBoundOffsetOverride = ValueMap.builder(0).put("null", 0).build();
+
+    @Comment("")
+    @Comment("-------------------------------")
+    @Comment("")
+    @Comment("Manually set the right bound offset for a given screen")
+    @Comment("Positive values expand the right boundary, allowing more tabs to be drawn")
+    @Comment("")
+    public final Map<String, Integer> rightBoundOffsetOverride = ValueMap.builder(0).put("null", 0).build();
+
+    @Comment("")
+    @Comment("-------------------------------")
+    @Comment("")
     @Comment("Manually set the Tab Provider for a given block or tag")
     @Comment("| -Provider ID-        | -Tab Behaviour-                            | -Default Blocks Added-")
     @Comment("| block_shulker_box    | Checks shulker blocked state               | Adds all ShulkerBoxBlocks")

@@ -8,3 +8,4 @@ mutable field net/minecraft/client/gui/screen/ingame/HandledScreen playerInvento
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen x I
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen y I
 accessible field net/minecraft/client/option/KeyBinding boundKey Lnet/minecraft/client/util/InputUtil$Key;
+accessible field net/minecraft/screen/ScreenHandler type Lnet/minecraft/screen/ScreenHandlerType;
