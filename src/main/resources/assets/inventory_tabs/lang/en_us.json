@@ -1,4 +1,5 @@
 {
   "key.inventory_tabs.key.next_tab": "Next Tab",
+  "key.inventory_tabs.key.toggle_tabs": "Toggle Tab Visibility",
   "gui.inventory_tabs.tab.inventory": "Inventory"
 }

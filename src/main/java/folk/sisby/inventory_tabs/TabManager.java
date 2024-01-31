@@ -224,6 +224,10 @@ public class TabManager {
     }
 
     public static boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (InventoryTabs.TOGGLE_TABS.matchesKey(keyCode, scanCode))
+        {
+            MinecraftClient.getInstance().getToastManager().add(new ControlHintToast(Text.literal("Tabs Toggled"), InventoryTabs.TOGGLE_TABS));
+        }
         if (holdTabCooldown <= 0 && nextTab == null && InventoryTabs.NEXT_TAB.matchesKey(keyCode, scanCode)) {
             holdTabCooldown = InventoryTabs.CONFIG.holdTabCooldown;
             if (Screen.hasShiftDown()) {

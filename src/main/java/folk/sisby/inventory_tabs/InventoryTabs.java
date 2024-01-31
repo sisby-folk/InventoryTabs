@@ -18,6 +18,7 @@ public class InventoryTabs implements ClientModInitializer {
     public static final InventoryTabsConfig CONFIG = InventoryTabsConfig.createToml(FabricLoader.getInstance().getConfigDir(), "", ID, InventoryTabsConfig.class);
 
     public static KeyBinding NEXT_TAB;
+    public static KeyBinding TOGGLE_TABS;
 
     public static Identifier id(String path) {
         return new Identifier(ID, path);
@@ -31,6 +32,12 @@ public class InventoryTabs implements ClientModInitializer {
                 "key.inventory_tabs.key.next_tab",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_TAB,
+                "key.categories.inventory"
+        ));
+        TOGGLE_TABS = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.inventory_tabs.key.toggle_tabs",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_LEFT_BRACKET,
                 "key.categories.inventory"
         ));
     }
