@@ -1,5 +1,7 @@
 {
   "key.inventory_tabs.key.next_tab": "Next Tab",
   "key.inventory_tabs.key.toggle_tabs": "Toggle Tab Visibility",
+  "toast.inventory_tabs.disabled.title": "Tabs Disabled",
+  "toast.inventory_tabs.disabled.key_hint": "[Press %s to toggle]",
   "gui.inventory_tabs.tab.inventory": "Inventory"
 }
