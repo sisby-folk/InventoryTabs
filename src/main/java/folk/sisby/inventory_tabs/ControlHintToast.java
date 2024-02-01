@@ -38,6 +38,6 @@ public class ControlHintToast implements Toast {
 
     @Override
     public int getWidth() {
-        return Math.max(titleWidth, hintWidth) + 16;
+        return Math.max(titleWidth, hintWidth) + 24;
     }
 }
