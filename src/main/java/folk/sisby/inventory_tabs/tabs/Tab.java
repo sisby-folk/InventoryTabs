@@ -1,6 +1,5 @@
 package folk.sisby.inventory_tabs.tabs;
 
-import folk.sisby.inventory_tabs.util.DrawUtil;
 import folk.sisby.inventory_tabs.util.WidgetPosition;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -15,17 +14,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public interface Tab {
-    Identifier TABS_TEXTURE = new Identifier("textures/gui/container/creative_inventory/tabs.png");
-    int TAB_INSET_HEIGHT_SELECTED = 4;
-    int TAB_INSET_HEIGHT_UNSELECTED = 0;
+    Identifier TAB_TOP_SELECTED_TEXTURE = new Identifier("textures/gui/sprites/container/creative_inventory/tab_top_selected_1.png");
+    Identifier TAB_TOP_UNSELECTED_TEXTURE = new Identifier("textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png");
+    Identifier TAB_BOTTOM_SELECTED_TEXTURE = new Identifier("textures/gui/sprites/container/creative_inventory/tab_bottom_selected_1.png");
+    Identifier TAB_BOTTOM_UNSELECTED_TEXTURE = new Identifier("textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png");
     int TAB_TEXTURE_WIDTH = 26;
     int TAB_TEXTURE_HEIGHT_SELECTED = 32;
-    int TAB_TEXTURE_HEIGHT_UNSELECTED = 30;
-    int TAB_TEXTURE_U = 26;
-    int TAB_TEXTURE_V_UNSELECTED = 2;
-    int TAB_TEXTURE_V_UNSELECTED_INVERTED = 64;
-    int TAB_TEXTURE_V_SELECTED = 32;
-    int TAB_TEXTURE_V_SELECTED_INVERTED = 96;
 
     /**
      * Opens the screen associated with the tab.
@@ -67,10 +61,10 @@ public interface Tab {
 
     default void render(DrawContext drawContext, WidgetPosition pos, int width, int height, double mouseX, double mouseY, boolean current) {
         int y = pos.y + (pos.up ? -height : height);
-        int drawHeight = height + (current ? TAB_INSET_HEIGHT_SELECTED : TAB_INSET_HEIGHT_UNSELECTED);
-        int textureHeight = current ? TAB_TEXTURE_HEIGHT_SELECTED : TAB_TEXTURE_HEIGHT_UNSELECTED;
-        int v = current ? (pos.up ? TAB_TEXTURE_V_SELECTED : TAB_TEXTURE_V_SELECTED_INVERTED) : (pos.up ? TAB_TEXTURE_V_UNSELECTED : TAB_TEXTURE_V_UNSELECTED_INVERTED);
-        DrawUtil.drawCrunched(drawContext, TABS_TEXTURE, pos.x, y, width, drawHeight, TAB_TEXTURE_WIDTH, textureHeight, TAB_TEXTURE_U, v);
+
+        Identifier texture = pos.up ? (current ? TAB_TOP_SELECTED_TEXTURE : TAB_TOP_UNSELECTED_TEXTURE) : (current ? TAB_BOTTOM_SELECTED_TEXTURE : TAB_BOTTOM_UNSELECTED_TEXTURE);
+        drawContext.drawTexture(texture,pos.x,y,0,0,width,height,TAB_TEXTURE_WIDTH,TAB_TEXTURE_HEIGHT_SELECTED);
+
         int itemPadding = Math.max(0, (width - 16) / 2);
         drawContext.drawItem(getTabIcon(), pos.x + itemPadding, y + itemPadding);
         if (new Rect2i(pos.x + itemPadding, y + itemPadding, 16, 16).contains((int) mouseX, (int) mouseY)) {

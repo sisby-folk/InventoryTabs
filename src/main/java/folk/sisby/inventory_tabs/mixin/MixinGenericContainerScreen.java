@@ -32,8 +32,8 @@ public abstract class MixinGenericContainerScreen extends HandledScreen<GenericC
             this.title = Text.empty();
             this.playerInventoryTitle = Text.empty();
         } else {
-            this.backgroundHeight -= 2;
-            this.playerInventoryTitleY = this.backgroundHeight - 94;
+            this.backgroundHeight -= 22;
+            this.playerInventoryTitleY = this.backgroundHeight - 74;
         }
     }
 

@@ -14,7 +14,8 @@ public class MixinBlockEntity {
     @Inject(method = "toInitialChunkDataNbt", at = @At("RETURN"))
     public void sendCustomNames(CallbackInfoReturnable<NbtCompound> cir) {
         if (((BlockEntity) (Object) this) instanceof LockableContainerBlockEntity lcbe) {
-            cir.getReturnValue().putString("CustomName", Text.Serializer.toJson(lcbe.getCustomName()));
+            Text customName = lcbe.getDisplayName();
+            if (customName != null) cir.getReturnValue().putString("CustomName", customName.getString());
         }
     }
 }
