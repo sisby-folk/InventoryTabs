@@ -2,6 +2,7 @@ package folk.sisby.inventory_tabs;
 
 import folk.sisby.inventory_tabs.duck.InventoryTabsScreen;
 import folk.sisby.inventory_tabs.tabs.*;
+import folk.sisby.inventory_tabs.util.BlockLineOfSightTimerUtil;
 import folk.sisby.inventory_tabs.util.HandlerSlotUtil;
 import folk.sisby.inventory_tabs.util.WidgetPosition;
 import net.minecraft.block.entity.BlockEntity;
@@ -80,6 +81,7 @@ public class TabManager {
     }
 
     public static void tick(ClientWorld world) {
+        BlockLineOfSightTimerUtil.tick();
         if (holdTabCooldown > 0) {
             if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), InventoryTabs.NEXT_TAB.boundKey.getCode())) {
                 holdTabCooldown--;
