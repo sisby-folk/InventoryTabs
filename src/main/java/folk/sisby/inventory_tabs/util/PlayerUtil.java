@@ -36,11 +36,12 @@ public class PlayerUtil {
     }
 
     public static BlockHitResult raycast(PlayerEntity player, BlockPos pos) {
-        List<Vec3d> blockOffsets = generateRandomVec3dList(9, new Vec3d(0.0D, 0.0D, 0.0D), new Vec3d(1.0D, 1.0D, 1.0D));
+        List<Vec3d> blockOffsets = new ArrayList<>();
         BlockLosTimer blockLosTimer = getBlockLosTimer(pos);
         if (blockLosTimer != null && blockLosTimer.lastViableOffset != null) {
             blockOffsets.add(blockLosTimer.lastViableOffset);
         }
+        blockOffsets.addAll(generateRandomVec3dList(9, new Vec3d(0.0D, 0.0D, 0.0D), new Vec3d(1.0D, 1.0D, 1.0D)));
         for (Vec3d offset : blockOffsets) {
             BlockHitResult hitResult = player.getWorld().raycast(new RaycastContext(player.getEyePos(), Vec3d.of(pos).add(offset), RaycastContext.ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player));
             if (hitResult.getType() != HitResult.Type.MISS && hitResult.getBlockPos().equals(pos)) {
