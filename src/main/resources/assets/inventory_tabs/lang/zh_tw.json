@@ -1,7 +1,7 @@
 {
   "key.inventory_tabs.key.next_tab": "下一頁",
-  "key.inventory_tabs.key.toggle_tabs": "切換分頁可見性",
-  "toast.inventory_tabs.disabled.title": "物品欄分頁已禁用",
+  "key.inventory_tabs.key.toggle_tabs": "切換頁簽可見度",
+  "toast.inventory_tabs.disabled.title": "已停用《物品欄頁籤》",
   "toast.inventory_tabs.disabled.key_hint": "[按 %s 來切換]",
   "gui.inventory_tabs.tab.inventory": "物品欄"
 }
