@@ -21,7 +21,6 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.Rect2i;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
@@ -95,7 +94,7 @@ public class TabManager {
         blockRaycastCache.values().removeIf(timer -> !timer.validThisTick && timer.ticksInvalid >= InventoryTabs.CONFIG.blockRaycastTimeout);
         blockRaycastCache.values().forEach(RaycastCache::tick);
         if (holdTabCooldown > 0) {
-            if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), InventoryTabs.NEXT_TAB.boundKey.getCode())) {
+            if (InventoryTabs.NEXT_TAB.isPressed()) {
                 holdTabCooldown--;
             } else {
                 holdTabCooldown = 0;

@@ -13,7 +13,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(GenericContainerScreen.class)
 public abstract class MixinGenericContainerScreen extends HandledScreen<GenericContainerScreenHandler> {
@@ -23,12 +25,17 @@ public abstract class MixinGenericContainerScreen extends HandledScreen<GenericC
         super(handler, inventory, title);
     }
 
+	@ModifyArgs(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;<init>(Lnet/minecraft/screen/ScreenHandler;Lnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/text/Text;)V"))
+	private static void containerHideTitle(Args args) {
+		if (((GenericContainerScreenHandler) args.get(0)).getRows() == 6 && InventoryTabs.CONFIG.compactLargeContainers) {
+			args.set(2, Text.empty());
+		}
+	}
+
     @Inject(method = "<init>", at = @At("TAIL"))
     public void containerTextHeight(GenericContainerScreenHandler handler, PlayerInventory inventory, Text title, CallbackInfo ci) {
         if (rows == 6 && InventoryTabs.CONFIG.compactLargeContainers) {
             this.backgroundHeight -= 30;
-            this.title = Text.empty();
-            this.playerInventoryTitle = Text.empty();
         } else {
             this.backgroundHeight -= 2;
             this.playerInventoryTitleY = this.backgroundHeight - 94;

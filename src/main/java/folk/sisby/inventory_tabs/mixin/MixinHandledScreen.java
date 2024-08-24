@@ -1,5 +1,7 @@
 package folk.sisby.inventory_tabs.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import folk.sisby.inventory_tabs.InventoryTabs;
 import folk.sisby.inventory_tabs.ScreenSupport;
 import folk.sisby.inventory_tabs.TabManager;
 import folk.sisby.inventory_tabs.duck.InventoryTabsScreen;
@@ -7,6 +9,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -75,6 +78,15 @@ public abstract class MixinHandledScreen extends Screen implements InventoryTabs
             cir.setReturnValue(TabManager.isClickOutsideBounds(mouseX, mouseY));
         }
     }
+
+	@ModifyExpressionValue(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerInventory;getDisplayName()Lnet/minecraft/text/Text;"))
+	private Text removeCompactPlayerInventoryTitle(Text original) {
+		HandledScreen<?> self = (HandledScreen<?>) (Object) this;
+		if (InventoryTabs.CONFIG.compactLargeContainers && self.getScreenHandler() instanceof GenericContainerScreenHandler gcsh && gcsh.getRows() == 6) {
+			return Text.empty();
+		}
+		return original;
+	}
 
     @Override
     public boolean inventoryTabs$allowTabs() {

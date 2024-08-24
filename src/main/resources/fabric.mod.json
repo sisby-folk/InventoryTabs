@@ -1,34 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "inventory-tabs",
+  "id": "${modId}",
   "version": "${version}",
-  "name": "Inventory Tabs",
-  "description": "Allows swapping to other in-world screens (blocks, entities, etc) via tabs.",
+  "name": "${modName}",
+  "description": "${modDescription}",
   "authors": [
-    "KQP",
-    "LiamMCW",
-    "Andrew6rant (Andrew Grant)",
-    "Sisby folk"
+    "${authors}"
+  ],
+  "contributors": [
+    "${contributors}"
   ],
   "contact": {
-    "homepage": "https://github.com/sisby-folk/inventory-tabs",
-    "sources": "https://github.com/sisby-folk/inventory-tabs",
-    "issues": "https://github.com/sisby-folk/inventory-tabs/issues"
+    "homepage": "${homepage}",
+    "issues": "${issues}",
+    "sources": "${sources}"
   },
-  "license": "MIT",
-  "icon": "assets/inventory_tabs/icon.png",
-  "entrypoints": {
-    "client": [
-      "folk.sisby.inventory_tabs.InventoryTabs"
-    ]
-  },
+  "license": "${license}",
+  "icon": "assets/${modId}/icon.png",
   "mixins": [
-    "inventory_tabs.mixins.json"
+    "${modId}.mixins.json"
   ],
-  "accessWidener": "inventory_tabs.accesswidener",
   "depends": {
     "fabricloader": ">=${fl}",
     "fabric-api": ">=${fapi}",
     "minecraft": ">=${mc}"
+  },
+  "entrypoints": {
+    "client": [
+      "folk.sisby.inventory_tabs.InventoryTabs"
+    ]
   }
 }

@@ -1,0 +1,7 @@
+{
+  "key.inventory_tabs.key.next_tab": "下一頁",
+  "key.inventory_tabs.key.toggle_tabs": "顯示／隱藏物品欄分頁",
+  "toast.inventory_tabs.disabled.title": "物品欄分頁已停用",
+  "toast.inventory_tabs.disabled.key_hint": "[按 %s 來顯示／隱藏]",
+  "gui.inventory_tabs.tab.inventory": "物品欄"
+}

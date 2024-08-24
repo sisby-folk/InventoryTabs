@@ -4,6 +4,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.HorseScreen;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
@@ -28,18 +29,26 @@ public class ScreenSupport {
         return null;
     }
 
+	public static ScreenHandlerType<?> getScreenHandlerType(ScreenHandler handler) {
+		try {
+			return handler.getType();
+		} catch (UnsupportedOperationException | NoSuchElementException ignored) {
+			return null;
+		}
+	}
+
     public static boolean allowTabs(Screen screen) {
         if (screen instanceof HandledScreen<?> hs && hs.getScreenHandler() != null) {
             if (DENY.values().stream().anyMatch(p -> p.test(hs))) return false;
             if (ALLOW.values().stream().anyMatch(p -> p.test(hs))) return true;
-            try {
-                ScreenHandlerType<?> type = hs.getScreenHandler().getType();
-                if (type != null) {
-                    Boolean override = allowTabs(Registry.SCREEN_HANDLER.getKey(type).orElseThrow());
-                    if (override != null) return override;
-                }
-            } catch (UnsupportedOperationException | NoSuchElementException ignored) {
-            }
+	        ScreenHandlerType<?> type = getScreenHandlerType(hs.getScreenHandler());
+	        if (type != null) {
+		        RegistryKey<ScreenHandlerType<?>> key = Registry.SCREEN_HANDLER.getKey(type).orElse(null);
+				if (key != null) {
+					Boolean override = allowTabs(key);
+					if (override != null) return override;
+				}
+	        }
             return InventoryTabs.CONFIG.allowScreensByDefault;
         }
         return false;
