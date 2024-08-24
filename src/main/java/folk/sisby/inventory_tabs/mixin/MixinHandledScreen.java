@@ -83,7 +83,7 @@ public abstract class MixinHandledScreen extends Screen implements InventoryTabs
 	private Text removeCompactPlayerInventoryTitle(Text original) {
 		HandledScreen<?> self = (HandledScreen<?>) (Object) this;
 		if (InventoryTabs.CONFIG.compactLargeContainers && self.getScreenHandler() instanceof GenericContainerScreenHandler gcsh && gcsh.getRows() == 6) {
-			return Text.empty();
+			return Text.of("");
 		}
 		return original;
 	}
