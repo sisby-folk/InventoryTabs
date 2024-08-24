@@ -3,21 +3,17 @@
 
 <center>
 Tabs to swap between nearby screens like chests, crafting stations, and even entities.<br/>
-Fully client side, with small server tweaks.<br/>
-Requires <a href="https://modrinth.com/mod/connector">Connector</a> and <a href="https://modrinth.com/mod/forgified-fabric-api">FFAPI</a> on forge.<br/>
-<i>Colloquially: Inventory Tabs 4</i><br/>
-For creative mode, try <a href="https://modrinth.com/mod/sidekick">Sidekick</a>!
+A fourth-generation rewrite of <a href="https://www.curseforge.com/minecraft/mc-mods/inventory-tabs">Inventory Tabs</a> by <a href="https://github.com/cakewhip">CakeWhip</a>, as continued by <a href="https://modrinth.com/user/Andrew6rant">Andrew6rant</a>.<br/>
+Requires <a href="https://modrinth.com/mod/connector">Connector</a> and <a href="https://modrinth.com/mod/forgified-fabric-api">FFAPI</a> on forge. For creative mode, try <a href="https://modrinth.com/mod/sidekick">Sidekick</a>!<br/>
 </center>
 
 ---
 
-Adds a row of tabs above screens representing nearby blocks and entities.
+**Inventory Tabs** is a client-side mod that displays tabs on screens, each representing nearby blocks and entities.
 
-By clicking on a tab you'll instantly swap to that screen, without any walking or swinging.
+Tap `tab` to cycle forward screens, `shift+tab` to cycle back, or just click around!
 
-You can also use Tab and Shift+Tab to cycle through available screens.
-
-### Basic Features
+### Features
 
 - Swap between crafting stations, storage, and your inventory without leaving their screens.
 - Works out of the box with many modded blocks - with configuration in case anything goes wrong.
@@ -32,7 +28,7 @@ You can also use Tab and Shift+Tab to cycle through available screens.
 
 #### Anti-Cheat & Fairness
 
-Inventory Tabs 4 offers no guarantees or defence against server moderation or anti-cheat - tabs provide an unfair advantage, and look outwardly suspicious to onlookers in multiplayer.<br/>
+Inventory Tabs offers no guarantees or defence against server moderation or anti-cheat - tabs provide an unfair advantage, and look outwardly suspicious to onlookers in multiplayer.<br/>
 Notably, the mod allows some usually impossible actions for the sake of convenience, e.g.
   - The full player inventory can be accessed while riding a horse or chest boat.
   - Sneak-interact inventories can be accessed without dismounting from a vehicle.
@@ -48,14 +44,14 @@ By default, helpful information for setting up the mod for your modpack is logge
 
 If tabs are appearing on a screen they don't fit well with, the screen can be blacklisted:
 
-```
+```toml
 [screenOverrides]
 	"fwaystones:waystone" = false
 ```
 
 If tabs are being made for an inappropriate block, you can manually disable their tab provider:
 
-```
+```toml
 [blockProviderOverrides]
 	"cool_mod:incompatible_block" = ""
 	"really_cool_mod:*" = ""
@@ -63,7 +59,7 @@ If tabs are being made for an inappropriate block, you can manually disable thei
 
 Or manually override it to a relevant one:
 
-```
+```toml
 [blockProviderOverrides]
 	"#cool_mod:crafting_stations" = "inventory_tabs:block_unique"
 	"cool_mod:single_chest" = "inventory_tabs:block_simple"
@@ -77,7 +73,7 @@ Overrides also work for entities and items, via `[entityProviderOverrides]` and 
 
 If too many inappropriate blocks are being matched, you may want to disable the default matching logic for a provider entirely:
 
-```
+```toml
 [registryProviderDefaults]
 	"inventory_tabs:block_simple" = false
 ```
@@ -99,7 +95,7 @@ Tabs are added via registered [Tab Providers](https://github.com/sisby-folk/inve
 
 ### Addons
 
-```
+```groovy
 repositories {
 	maven { url "https://repo.sleeping.town/" }
 }
@@ -121,7 +117,7 @@ This version is a partial rewrite, following the work of CakeWhip, LiamMCW, and 
 
 This mod is included in [Tinkerer's Quilt](https://modrinth.com/modpack/tinkerers-quilt) - our modpack about rediscovering vanilla.
 
-We're open to suggestions for how to implement stuff better - if you see something wonky and have an idea - let us know.
+We're open to better ways to implement our mods. If you see something odd and have an idea, let us know!
 
 ---
 

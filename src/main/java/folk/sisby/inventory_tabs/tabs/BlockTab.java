@@ -1,6 +1,7 @@
 package folk.sisby.inventory_tabs.tabs;
 
 import folk.sisby.inventory_tabs.InventoryTabs;
+import folk.sisby.inventory_tabs.mixin.SignBlockEntityAccessor;
 import folk.sisby.inventory_tabs.util.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
@@ -88,7 +89,7 @@ public class BlockTab implements Tab {
         }
         List<SignBlockEntity> signs = BlockUtil.getAttachedBlocks(world, previewPos, (w, p) -> w.getBlockEntity(p) instanceof SignBlockEntity sbe ? sbe : null);
         if (!signs.isEmpty()) {
-            String name = Arrays.stream(signs.get(0).getTexts(false)).map(Text::getString).filter(s -> !s.isBlank()).collect(Collectors.joining(" "));
+            String name = Arrays.stream(((SignBlockEntityAccessor) signs.get(0)).getTexts()).map(Text::getString).filter(s -> !s.isBlank()).collect(Collectors.joining(" "));
             if (!name.isBlank()) hoverText = Text.of(name).copy().formatted(Formatting.ITALIC);
         }
     }
