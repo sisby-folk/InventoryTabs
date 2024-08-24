@@ -1,5 +1,6 @@
 package folk.sisby.inventory_tabs.tabs;
 
+import folk.sisby.inventory_tabs.mixin.HandledScreenAccessor;
 import folk.sisby.inventory_tabs.util.DrawUtil;
 import folk.sisby.inventory_tabs.util.WidgetPosition;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -82,7 +83,7 @@ public interface Tab {
         int itemPadding = Math.max(0, (width - 16) / 2);
         int itemX = pos.x + itemPadding;
         int itemY = y + itemPadding + ITEM_Y_OFFSET[type];
-        screen.drawItem(getTabIcon(), itemX, itemY, null);
+        ((HandledScreenAccessor) screen).drawItem(getTabIcon(), itemX, itemY, null);
     }
 
     default void renderTooltips(HandledScreen<?> screen, MatrixStack matrices, WidgetPosition pos, int width, int height, double mouseX, double mouseY, boolean current) {

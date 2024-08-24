@@ -21,6 +21,7 @@
 	},
 	"mixins": [
 		"MixinBlockEntity",
-		"ShulkerBoxBlockAccessor"
+		"ShulkerBoxBlockAccessor",
+		"SignBlockEntityAccessor"
 	]
 }
